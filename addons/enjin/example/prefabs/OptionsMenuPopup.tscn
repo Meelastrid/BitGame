@@ -1,0 +1,574 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://addons/enjin/example/themes/main_menu.tres" type="Theme" id=1]
+[ext_resource path="res://addons/enjin/example/themes/pause_sidebar.tres" type="Theme" id=2]
+[ext_resource path="res://addons/enjin/example/scripts/client/OptionsMenu.gd" type="Script" id=3]
+[ext_resource path="res://addons/enjin/example/themes/options_grid.tres" type="Theme" id=4]
+[ext_resource path="res://addons/enjin/example/scripts/client/Sidebar.gd" type="Script" id=5]
+[ext_resource path="res://addons/enjin/example/fonts/Roboto40.tres" type="DynamicFont" id=6]
+[ext_resource path="res://addons/enjin/example/themes/util_button_pressed.tres" type="StyleBox" id=7]
+[ext_resource path="res://addons/enjin/example/themes/util_button_hover.tres" type="StyleBox" id=8]
+[ext_resource path="res://addons/enjin/example/themes/util_button_normal.tres" type="StyleBox" id=9]
+[ext_resource path="res://addons/enjin/example/audio/ui_click_sfx.wav" type="AudioStream" id=10]
+[ext_resource path="res://addons/enjin/example/themes/options_highlight_stylebox.tres" type="StyleBox" id=11]
+[ext_resource path="res://addons/enjin/example/audio/ui_blip_sfx.wav" type="AudioStream" id=12]
+[ext_resource path="res://addons/enjin/example/themes/options_highlight_stylebox_hover.tres" type="StyleBox" id=13]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.156863, 0.156863, 0.156863, 0.882353 )
+
+[sub_resource type="StyleBoxLine" id=2]
+color = Color( 1, 1, 1, 0.196078 )
+thickness = 3
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[node name="OptionsMenu" type="PopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 350.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PressedSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+bus = "UI"
+
+[node name="HighlightSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "UI"
+
+[node name="AudioTest" type="AudioStreamPlayer" parent="."]
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -9.33081
+margin_right = -9.33081
+custom_constants/margin_right = 300
+custom_constants/margin_top = 100
+custom_constants/margin_left = 300
+custom_constants/margin_bottom = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox" type="HBoxContainer" parent="Margin"]
+margin_left = 300.0
+margin_top = 100.0
+margin_right = 1270.0
+margin_bottom = 980.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sidebar" type="Panel" parent="Margin/HBox"]
+margin_right = 300.0
+margin_bottom = 880.0
+rect_min_size = Vector2( 300, 0 )
+theme = ExtResource( 2 )
+script = ExtResource( 5 )
+
+[node name="Buttons" type="MarginContainer" parent="Margin/HBox/Sidebar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_top = 30
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="Margin/HBox/Sidebar/Buttons"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 300.0
+margin_bottom = 850.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="General" type="Button" parent="Margin/HBox/Sidebar/Buttons/VBox"]
+margin_right = 270.0
+margin_bottom = 48.0
+focus_neighbour_bottom = NodePath("../Video")
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = ExtResource( 13 )
+custom_styles/normal = ExtResource( 11 )
+custom_fonts/font = ExtResource( 6 )
+text = "GENERAL"
+align = 0
+
+[node name="Video" type="Button" parent="Margin/HBox/Sidebar/Buttons/VBox"]
+margin_top = 68.0
+margin_right = 270.0
+margin_bottom = 116.0
+focus_neighbour_top = NodePath("../General")
+focus_neighbour_bottom = NodePath("../Audio")
+custom_fonts/font = ExtResource( 6 )
+text = "VIDEO"
+align = 0
+
+[node name="Audio" type="Button" parent="Margin/HBox/Sidebar/Buttons/VBox"]
+margin_top = 136.0
+margin_right = 270.0
+margin_bottom = 184.0
+focus_neighbour_top = NodePath("../Video")
+focus_neighbour_bottom = NodePath("../../../../OptionsArea/VBox/Bottombar/HBox/Close")
+custom_fonts/font = ExtResource( 6 )
+text = "AUDIO"
+align = 0
+
+[node name="OptionsArea" type="Panel" parent="Margin/HBox"]
+margin_left = 300.0
+margin_right = 970.0
+margin_bottom = 880.0
+size_flags_horizontal = 3
+theme = ExtResource( 4 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBox" type="VBoxContainer" parent="Margin/HBox/OptionsArea"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GeneralOptions" type="HBoxContainer" parent="Margin/HBox/OptionsArea/VBox"]
+margin_right = 670.0
+margin_bottom = 92.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="MarginContainer" parent="Margin/HBox/OptionsArea/VBox/GeneralOptions"]
+margin_right = 337.0
+margin_bottom = 92.0
+custom_constants/margin_top = 30
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxntainer" type="VBoxContainer" parent="Margin/HBox/OptionsArea/VBox/GeneralOptions/Description"]
+margin_left = 20.0
+margin_top = 30.0
+margin_right = 337.0
+margin_bottom = 62.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShowControls" type="Label" parent="Margin/HBox/OptionsArea/VBox/GeneralOptions/Description/VBoxntainer"]
+margin_right = 317.0
+margin_bottom = 29.0
+text = "Show controls on start"
+uppercase = true
+
+[node name="Button" type="MarginContainer" parent="Margin/HBox/OptionsArea/VBox/GeneralOptions"]
+margin_left = 586.0
+margin_right = 670.0
+margin_bottom = 92.0
+size_flags_horizontal = 10
+custom_constants/margin_right = 20
+custom_constants/margin_top = 30
+custom_constants/margin_bottom = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="Margin/HBox/OptionsArea/VBox/GeneralOptions/Button"]
+margin_top = 30.0
+margin_right = 64.0
+margin_bottom = 62.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShowControls" type="CheckButton" parent="Margin/HBox/OptionsArea/VBox/GeneralOptions/Button/VBox" groups=[
+"general_controls_btn",
+]]
+margin_right = 64.0
+margin_bottom = 32.0
+size_flags_horizontal = 8
+pressed = true
+align = 2
+
+[node name="VideoOptions" type="HBoxContainer" parent="Margin/HBox/OptionsArea/VBox"]
+visible = false
+margin_top = 92.0
+margin_right = 670.0
+margin_bottom = 228.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="MarginContainer" parent="Margin/HBox/OptionsArea/VBox/VideoOptions"]
+margin_right = 193.0
+margin_bottom = 136.0
+custom_constants/margin_top = 30
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxntainer" type="VBoxContainer" parent="Margin/HBox/OptionsArea/VBox/VideoOptions/Description"]
+margin_left = 20.0
+margin_top = 30.0
+margin_right = 193.0
+margin_bottom = 106.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Window" type="Label" parent="Margin/HBox/OptionsArea/VBox/VideoOptions/Description/VBoxntainer"]
+margin_right = 173.0
+margin_bottom = 29.0
+text = "WINDOW MODE"
+
+[node name="Resolution" type="Label" parent="Margin/HBox/OptionsArea/VBox/VideoOptions/Description/VBoxntainer"]
+visible = false
+margin_top = 44.0
+margin_right = 230.0
+margin_bottom = 73.0
+text = "RESOLUTION"
+
+[node name="Vsync" type="Label" parent="Margin/HBox/OptionsArea/VBox/VideoOptions/Description/VBoxntainer"]
+margin_top = 44.0
+margin_right = 173.0
+margin_bottom = 73.0
+text = "V-SYNC"
+
+[node name="Button" type="MarginContainer" parent="Margin/HBox/OptionsArea/VBox/VideoOptions"]
+margin_left = 507.0
+margin_right = 670.0
+margin_bottom = 136.0
+size_flags_horizontal = 10
+custom_constants/margin_right = 20
+custom_constants/margin_top = 30
+custom_constants/margin_bottom = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="Margin/HBox/OptionsArea/VBox/VideoOptions/Button"]
+margin_top = 30.0
+margin_right = 143.0
+margin_bottom = 106.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Window" type="OptionButton" parent="Margin/HBox/OptionsArea/VBox/VideoOptions/Button/VBox" groups=[
+"video_window_btn",
+]]
+margin_right = 143.0
+margin_bottom = 29.0
+text = "WINDOWED"
+align = 2
+items = [ "FULL SCREEN", null, false, 0, null, "WINDOWED", null, false, 1, null, "BORDERLESS WINDOW", null, false, 2, null ]
+selected = 1
+
+[node name="Resolution" type="OptionButton" parent="Margin/HBox/OptionsArea/VBox/VideoOptions/Button/VBox" groups=[
+"video_resolution_btn",
+]]
+visible = false
+margin_top = 44.0
+margin_right = 180.0
+margin_bottom = 73.0
+text = "1920x1080"
+align = 2
+items = [ "1280x1024", null, false, 0, null, "1360x768", null, false, 1, null, "1366x768", null, false, 2, null, "1440x900", null, false, 3, null, "1600x900", null, false, 4, null, "1680x1050", null, false, 5, null, "1920x1080", null, false, 6, null, "2560x1080", null, false, 7, null, "2560x1440", null, false, 8, null, "3840x2160", null, false, 9, null ]
+selected = 6
+
+[node name="Vsync" type="CheckButton" parent="Margin/HBox/OptionsArea/VBox/VideoOptions/Button/VBox" groups=[
+"video_vsync_btn",
+]]
+margin_left = 79.0
+margin_top = 44.0
+margin_right = 143.0
+margin_bottom = 76.0
+size_flags_horizontal = 8
+pressed = true
+align = 2
+
+[node name="AudioOptions" type="HBoxContainer" parent="Margin/HBox/OptionsArea/VBox"]
+visible = false
+margin_right = 670.0
+margin_bottom = 221.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="MarginContainer" parent="Margin/HBox/OptionsArea/VBox/AudioOptions"]
+margin_right = 216.0
+margin_bottom = 221.0
+custom_constants/margin_top = 30
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 30
+
+[node name="VBox" type="VBoxContainer" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Description"]
+margin_left = 20.0
+margin_top = 30.0
+margin_right = 216.0
+margin_bottom = 191.0
+custom_constants/separation = 15
+
+[node name="MasterVolume" type="Label" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Description/VBox"]
+margin_right = 196.0
+margin_bottom = 29.0
+text = "Master Volume"
+uppercase = true
+
+[node name="MusicVolume" type="Label" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Description/VBox"]
+margin_top = 44.0
+margin_right = 196.0
+margin_bottom = 73.0
+text = "Music"
+align = 2
+uppercase = true
+
+[node name="SFXVolume" type="Label" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Description/VBox"]
+margin_top = 88.0
+margin_right = 196.0
+margin_bottom = 117.0
+text = "SFX"
+align = 2
+uppercase = true
+
+[node name="UIVolume" type="Label" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Description/VBox"]
+margin_top = 132.0
+margin_right = 196.0
+margin_bottom = 161.0
+text = "UI"
+align = 2
+uppercase = true
+
+[node name="Buttons" type="MarginContainer" parent="Margin/HBox/OptionsArea/VBox/AudioOptions"]
+margin_left = 386.0
+margin_right = 670.0
+margin_bottom = 221.0
+size_flags_horizontal = 10
+custom_constants/margin_right = 20
+custom_constants/margin_top = 30
+custom_constants/margin_bottom = 30
+
+[node name="VBox" type="VBoxContainer" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons"]
+margin_top = 30.0
+margin_right = 264.0
+margin_bottom = 191.0
+size_flags_horizontal = 0
+custom_constants/separation = 15
+
+[node name="MasterVolume" type="HBoxContainer" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox"]
+margin_right = 264.0
+margin_bottom = 29.0
+
+[node name="Slider" type="HSlider" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox/MasterVolume" groups=[
+"audio_master_slider",
+"audio_sliders",
+]]
+margin_top = 6.0
+margin_right = 200.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 4
+value = 100.0
+
+[node name="Label" type="Label" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox/MasterVolume"]
+margin_left = 204.0
+margin_right = 264.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 60, 0 )
+text = "100"
+align = 1
+valign = 1
+
+[node name="MusicVolume" type="HBoxContainer" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox"]
+margin_top = 44.0
+margin_right = 264.0
+margin_bottom = 73.0
+
+[node name="Slider" type="HSlider" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox/MusicVolume" groups=[
+"audio_music_slider",
+"audio_sliders",
+]]
+margin_top = 6.0
+margin_right = 200.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 4
+value = 100.0
+
+[node name="Label" type="Label" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox/MusicVolume"]
+margin_left = 204.0
+margin_right = 264.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 60, 0 )
+text = "100"
+align = 1
+valign = 1
+
+[node name="SFXVolume" type="HBoxContainer" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox"]
+margin_top = 88.0
+margin_right = 264.0
+margin_bottom = 117.0
+
+[node name="Slider" type="HSlider" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox/SFXVolume" groups=[
+"audio_sfx_slider",
+"audio_sliders",
+]]
+margin_top = 6.0
+margin_right = 200.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 4
+value = 100.0
+
+[node name="Label" type="Label" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox/SFXVolume"]
+margin_left = 204.0
+margin_right = 264.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 60, 0 )
+text = "100"
+align = 1
+valign = 1
+
+[node name="UIVolume" type="HBoxContainer" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox"]
+margin_top = 132.0
+margin_right = 264.0
+margin_bottom = 161.0
+
+[node name="Slider" type="HSlider" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox/UIVolume" groups=[
+"audio_sliders",
+"audio_ui_slider",
+]]
+margin_top = 6.0
+margin_right = 200.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 4
+value = 100.0
+
+[node name="Label" type="Label" parent="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox/UIVolume"]
+margin_left = 204.0
+margin_right = 264.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 60, 0 )
+text = "100"
+align = 1
+valign = 1
+
+[node name="Bottombar" type="Panel" parent="Margin/HBox/OptionsArea/VBox"]
+margin_top = 780.0
+margin_right = 670.0
+margin_bottom = 880.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_vertical = 10
+custom_styles/panel = SubResource( 2 )
+
+[node name="HBox" type="HBoxContainer" parent="Margin/HBox/OptionsArea/VBox/Bottombar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 250
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="Button" parent="Margin/HBox/OptionsArea/VBox/Bottombar/HBox"]
+margin_left = 136.0
+margin_top = 35.0
+margin_right = 210.0
+margin_bottom = 64.0
+focus_neighbour_top = NodePath("../../../../../Sidebar/Buttons/VBox/Audio")
+focus_neighbour_right = NodePath("../Apply")
+size_flags_horizontal = 0
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = ExtResource( 9 )
+text = "CLOSE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Apply" type="Button" parent="Margin/HBox/OptionsArea/VBox/Bottombar/HBox" groups=[
+"options_apply_btn",
+]]
+margin_left = 460.0
+margin_top = 35.0
+margin_right = 533.0
+margin_bottom = 64.0
+focus_neighbour_left = NodePath("../Close")
+focus_neighbour_top = NodePath("../../../../../Sidebar/Buttons/VBox/Audio")
+size_flags_horizontal = 0
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = ExtResource( 9 )
+text = "APPLY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXTestTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="UITestTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+[connection signal="mouse_entered" from="Margin/HBox/Sidebar/Buttons/VBox/General" to="." method="_on_btn_mouse_entered"]
+[connection signal="pressed" from="Margin/HBox/Sidebar/Buttons/VBox/General" to="." method="_on_general_pressed"]
+[connection signal="pressed" from="Margin/HBox/Sidebar/Buttons/VBox/General" to="." method="_on_btn_pressed"]
+[connection signal="mouse_entered" from="Margin/HBox/Sidebar/Buttons/VBox/Video" to="." method="_on_btn_mouse_entered"]
+[connection signal="pressed" from="Margin/HBox/Sidebar/Buttons/VBox/Video" to="." method="_on_btn_pressed"]
+[connection signal="pressed" from="Margin/HBox/Sidebar/Buttons/VBox/Video" to="." method="_on_video_pressed"]
+[connection signal="mouse_entered" from="Margin/HBox/Sidebar/Buttons/VBox/Audio" to="." method="_on_btn_mouse_entered"]
+[connection signal="pressed" from="Margin/HBox/Sidebar/Buttons/VBox/Audio" to="." method="_on_btn_pressed"]
+[connection signal="pressed" from="Margin/HBox/Sidebar/Buttons/VBox/Audio" to="." method="_on_audio_pressed"]
+[connection signal="toggled" from="Margin/HBox/OptionsArea/VBox/GeneralOptions/Button/VBox/ShowControls" to="." method="_on_show_controls_toggled"]
+[connection signal="item_selected" from="Margin/HBox/OptionsArea/VBox/VideoOptions/Button/VBox/Window" to="." method="_on_window_item_selected"]
+[connection signal="item_selected" from="Margin/HBox/OptionsArea/VBox/VideoOptions/Button/VBox/Resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="toggled" from="Margin/HBox/OptionsArea/VBox/VideoOptions/Button/VBox/Vsync" to="." method="_on_vsync_toggled"]
+[connection signal="value_changed" from="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox/MasterVolume/Slider" to="." method="_on_master_volume_changed"]
+[connection signal="value_changed" from="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox/MusicVolume/Slider" to="." method="_on_music_volume_changed"]
+[connection signal="gui_input" from="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox/SFXVolume/Slider" to="." method="_on_sfx_slider_gui_input"]
+[connection signal="value_changed" from="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox/SFXVolume/Slider" to="." method="_on_sfx_volume_changed"]
+[connection signal="gui_input" from="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox/UIVolume/Slider" to="." method="_on_ui_slider_gui_input"]
+[connection signal="value_changed" from="Margin/HBox/OptionsArea/VBox/AudioOptions/Buttons/VBox/UIVolume/Slider" to="." method="_on_ui_volume_changed"]
+[connection signal="mouse_entered" from="Margin/HBox/OptionsArea/VBox/Bottombar/HBox/Close" to="." method="_on_btn_mouse_entered"]
+[connection signal="pressed" from="Margin/HBox/OptionsArea/VBox/Bottombar/HBox/Close" to="." method="_on_btn_pressed"]
+[connection signal="pressed" from="Margin/HBox/OptionsArea/VBox/Bottombar/HBox/Close" to="." method="_on_close"]
+[connection signal="mouse_entered" from="Margin/HBox/OptionsArea/VBox/Bottombar/HBox/Apply" to="." method="_on_btn_mouse_entered"]
+[connection signal="pressed" from="Margin/HBox/OptionsArea/VBox/Bottombar/HBox/Apply" to="." method="_on_btn_pressed"]
+[connection signal="pressed" from="Margin/HBox/OptionsArea/VBox/Bottombar/HBox/Apply" to="." method="_on_apply"]
+[connection signal="timeout" from="SFXTestTimer" to="." method="_play_test_sfx"]
+[connection signal="timeout" from="UITestTimer" to="." method="_play_test_ui"]
