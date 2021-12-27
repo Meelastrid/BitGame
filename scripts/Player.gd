@@ -21,7 +21,6 @@ func _input(event):
         print("Attacking")
         animation_player.play("attack")
 
-
 func _physics_process(delta):
     look_at(target)
     if moving:
