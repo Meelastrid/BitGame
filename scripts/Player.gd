@@ -1,12 +1,32 @@
-extends Sprite
+extends KinematicBody2D
 
+export (int) var speed = 200
 
-# Called when the node enters the scene tree for the first time.
+var target = position
+var velocity = Vector2()
+var moving = false
+onready var animation_player = $WeaponPivot/Sword/AnimationPlayer
+
 func _ready():
-    pass # Replace with function body.
+    animation_player.play("RESET")
+
+func rotate_to_mouse():
+    look_at(get_global_mouse_position())
 
 func _input(event):
-    # Mouse in viewport coordinates.
+    target = get_global_mouse_position()
     if event.is_action_pressed("left_click"):
-        position = get_viewport().get_mouse_position()
-        print("Mouse Click/Unclick at: ", get_viewport().get_mouse_position())
+        moving = true
+    if event.is_action_pressed("right_click"):
+        print("Attacking")
+        animation_player.play("attack")
+
+
+func _physics_process(delta):
+    look_at(target)
+    if moving:
+        velocity = position.direction_to(target) * speed
+        if position.distance_to(target) > 5:
+            velocity = move_and_slide(velocity)
+        else:
+            moving = false
