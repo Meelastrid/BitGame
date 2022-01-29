@@ -92,124 +92,128 @@ radius = 13.0
 
 [node name="Main" type="Node2D"]
 
-[node name="PlatformClient" type="Node2D" parent="."]
-script = ExtResource( 4 )
+[node name="Navigation2D" type="Navigation2D" parent="."]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="Navigation2D"]
 tile_set = ExtResource( 5 )
 cell_tile_origin = 1
 format = 1
-tile_data = PoolIntArray( 0, 1073741824, 1, 1, 1073741824, 2, 2, 1073741824, 2, 3, 1073741824, 2, 4, 1073741824, 0, 5, 1073741824, 1, 6, 1073741824, 3, 7, 1073741824, 1, 8, 1073741824, 2, 9, 1073741824, 2, 10, 1073741824, 0, 11, 1073741824, 2, 12, 1073741824, 1, 13, 1073741824, 2, 14, 1073741824, 3, 15, 1073741824, 2, 65536, 1073741824, 2, 65537, 1073741824, 0, 65538, 1073741824, 1, 65539, 1073741824, 0, 65540, 1073741824, 2, 65541, 1073741824, 3, 65542, 1073741824, 3, 65543, 1073741824, 1, 65544, 1073741824, 3, 65545, 1073741824, 1, 65546, 1073741824, 2, 65547, 1073741824, 0, 65548, 1073741824, 0, 65549, 1073741824, 0, 65550, 1073741824, 3, 65551, 1073741824, 0, 131072, 1073741824, 3, 131073, 1073741824, 0, 131074, 1073741824, 2, 131075, 1073741824, 0, 131076, 1073741824, 3, 131077, 1073741824, 0, 131078, 1073741824, 3, 131079, 1073741824, 2, 131080, 1073741824, 1, 131081, 1073741824, 2, 131082, 1073741824, 0, 131083, 1073741824, 1, 131084, 1073741824, 1, 131085, 1073741824, 3, 131086, 1073741824, 0, 131087, 1073741824, 3, 196608, 1073741824, 0, 196609, 1073741824, 3, 196610, 1073741824, 3, 196611, 1073741824, 0, 196612, 1073741824, 2, 196613, 1073741824, 2, 196614, 1073741824, 2, 196615, 1073741824, 3, 196616, 1073741824, 1, 196617, 0, 0, 196618, 1073741824, 3, 196619, 1073741824, 0, 196620, 1073741824, 0, 196621, 1073741824, 1, 196622, 1073741824, 1, 196623, 1073741824, 0, 262144, 1073741824, 3, 262145, 1073741824, 1, 262146, 1073741824, 1, 262147, 1073741824, 1, 262148, 1073741824, 3, 262149, 1073741824, 3, 262150, 1073741824, 2, 262151, 1073741824, 3, 262152, 1073741824, 0, 262153, 1073741824, 0, 262154, 1073741824, 3, 262155, 1073741824, 0, 262156, 1073741824, 0, 262157, 1073741824, 3, 262158, 1073741824, 3, 262159, 1073741824, 3, 327680, 1073741824, 2, 327681, 1073741824, 0, 327682, 1073741824, 3, 327683, 1073741824, 1, 327684, 1073741824, 0, 327685, 1073741824, 3, 327686, 1073741824, 2, 327687, 1073741824, 1, 327688, 1073741824, 0, 327689, 1073741824, 0, 327690, 1073741824, 0, 327691, 1073741824, 3, 327692, 1073741824, 2, 327693, 1073741824, 3, 327694, 1073741824, 2, 327695, 1073741824, 3, 393216, 1073741824, 3, 393217, 1073741824, 3, 393218, 1073741824, 1, 393219, 1073741824, 0, 393220, 1073741824, 0, 393221, 1073741824, 0, 393222, 1073741824, 1, 393223, 1073741824, 1, 393224, 1073741824, 1, 393225, 1073741824, 3, 393226, 1073741824, 2, 393227, 1073741824, 3, 393228, 1073741824, 1, 393229, 1073741824, 2, 393230, 1073741824, 0, 393231, 1073741824, 0, 458752, 1073741824, 1, 458753, 1073741824, 2, 458754, 1073741824, 1, 458755, 1073741824, 0, 458756, 1073741824, 3, 458757, 1073741824, 3, 458758, 1073741824, 1, 458759, 1073741824, 3, 458760, 1073741824, 2, 458761, 1073741824, 1, 458762, 1073741824, 3, 458763, 1073741824, 2, 458764, 1073741824, 2, 458765, 1073741824, 1, 458766, 1073741824, 2, 458767, 1073741824, 1, 524288, 1073741824, 3, 524289, 1073741824, 3, 524290, 1073741824, 2, 524291, 1073741824, 0, 524292, 1073741824, 3, 524293, 1073741824, 2, 524294, 1073741824, 3, 524295, 1073741824, 3, 524296, 1073741824, 1, 524297, 1073741824, 1, 524298, 1073741824, 2, 524299, 1073741824, 0, 524300, 1073741824, 0, 524301, 1073741824, 2, 524302, 1073741824, 2, 524303, 1073741824, 2, 589824, 1073741824, 1, 589825, 1073741824, 3, 589826, 1073741824, 3, 589827, 1073741824, 1, 589828, 1073741824, 3, 589829, 1073741824, 2, 589830, 1073741824, 2, 589831, 1073741824, 1, 589832, 1073741824, 2, 589833, 1073741824, 0, 589834, 1073741824, 2, 589835, 1073741824, 3, 589836, 1073741824, 1, 589837, 1073741824, 3, 589838, 1073741824, 2, 589839, 1073741824, 1 )
+tile_data = PoolIntArray( 0, 1073741824, 1, 1, 1073741824, 2, 2, 1073741824, 2, 3, 1073741824, 2, 4, 1073741824, 0, 5, 1073741824, 1, 6, 1073741824, 3, 7, 1073741824, 1, 8, 1073741824, 2, 9, 1073741824, 2, 10, 1073741824, 0, 11, 1073741824, 2, 12, 1073741824, 1, 13, 1073741824, 2, 14, 1073741824, 3, 15, 1073741824, 2, 65536, 1073741824, 2, 65537, 1073741824, 0, 65538, 1073741824, 1, 65539, 1073741824, 0, 65540, 1073741824, 2, 65541, 1073741824, 3, 65542, 1073741824, 3, 65543, 0, 0, 65544, 1073741824, 3, 65545, 1073741824, 1, 65546, 1073741824, 2, 65547, 1073741824, 0, 65548, 1073741824, 0, 65549, 1073741824, 0, 65550, 1073741824, 3, 65551, 1073741824, 0, 131072, 1073741824, 3, 131073, 1073741824, 0, 131074, 1073741824, 2, 131075, 1073741824, 0, 131076, 1073741824, 3, 131077, 1073741824, 0, 131078, 1073741824, 3, 131079, 1073741824, 2, 131080, 1073741824, 1, 131081, 1073741824, 2, 131082, 1073741824, 0, 131083, 1073741824, 1, 131084, 1073741824, 1, 131085, 1073741824, 3, 131086, 1073741824, 0, 131087, 1073741824, 3, 196608, 1073741824, 0, 196609, 1073741824, 3, 196610, 1073741824, 3, 196611, 1073741824, 0, 196612, 1073741824, 2, 196613, 1073741824, 2, 196614, 1073741824, 2, 196615, 1073741824, 3, 196616, 1073741824, 1, 196617, 0, 0, 196618, 1073741824, 3, 196619, 1073741824, 0, 196620, 1073741824, 0, 196621, 1073741824, 1, 196622, 1073741824, 1, 196623, 1073741824, 0, 262144, 1073741824, 3, 262145, 1073741824, 1, 262146, 1073741824, 1, 262147, 1073741824, 1, 262148, 1073741824, 3, 262149, 1073741824, 3, 262150, 1073741824, 2, 262151, 1073741824, 3, 262152, 1073741824, 0, 262153, 1073741824, 0, 262154, 1073741824, 3, 262155, 1073741824, 0, 262156, 1073741824, 0, 262157, 1073741824, 3, 262158, 1073741824, 3, 262159, 1073741824, 3, 327680, 1073741824, 2, 327681, 1073741824, 0, 327682, 1073741824, 3, 327683, 1073741824, 1, 327684, 1073741824, 0, 327685, 1073741824, 3, 327686, 1073741824, 2, 327687, 1073741824, 1, 327688, 1073741824, 0, 327689, 1073741824, 0, 327690, 1073741824, 0, 327691, 1073741824, 3, 327692, 1073741824, 2, 327693, 1073741824, 3, 327694, 1073741824, 2, 327695, 1073741824, 3, 393216, 1073741824, 3, 393217, 1073741824, 3, 393218, 1073741824, 1, 393219, 1073741824, 0, 393220, 1073741824, 0, 393221, 1073741824, 0, 393222, 1073741824, 1, 393223, 1073741824, 1, 393224, 1073741824, 1, 393225, 1073741824, 3, 393226, 1073741824, 2, 393227, 1073741824, 3, 393228, 1073741824, 1, 393229, 1073741824, 2, 393230, 1073741824, 0, 393231, 1073741824, 0, 458752, 1073741824, 1, 458753, 1073741824, 2, 458754, 1073741824, 1, 458755, 1073741824, 0, 458756, 1073741824, 3, 458757, 1073741824, 3, 458758, 1073741824, 1, 458759, 1073741824, 3, 458760, 1073741824, 2, 458761, 1073741824, 1, 458762, 1073741824, 3, 458763, 1073741824, 2, 458764, 1073741824, 2, 458765, 1073741824, 1, 458766, 1073741824, 2, 458767, 1073741824, 1, 524288, 1073741824, 3, 524289, 1073741824, 3, 524290, 1073741824, 2, 524291, 1073741824, 0, 524292, 1073741824, 3, 524293, 1073741824, 2, 524294, 1073741824, 3, 524295, 1073741824, 3, 524296, 1073741824, 1, 524297, 1073741824, 1, 524298, 1073741824, 2, 524299, 1073741824, 0, 524300, 1073741824, 0, 524301, 1073741824, 2, 524302, 1073741824, 2, 524303, 1073741824, 2, 589824, 1073741824, 1, 589825, 1073741824, 3, 589826, 1073741824, 3, 589827, 1073741824, 1, 589828, 1073741824, 3, 589829, 1073741824, 2, 589830, 1073741824, 2, 589831, 1073741824, 1, 589832, 1073741824, 2, 589833, 1073741824, 0, 589834, 1073741824, 2, 589835, 1073741824, 3, 589836, 1073741824, 1, 589837, 1073741824, 3, 589838, 1073741824, 2, 589839, 1073741824, 1 )
 
-[node name="Player" type="KinematicBody2D" parent="TileMap"]
+[node name="Player" type="KinematicBody2D" parent="Navigation2D/TileMap"]
 position = Vector2( 480, 224 )
 collision_mask = 6
 script = ExtResource( 3 )
 
-[node name="Collision" type="CollisionShape2D" parent="TileMap/Player"]
+[node name="Collision" type="CollisionShape2D" parent="Navigation2D/TileMap/Player"]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="TileMap/Player"]
+[node name="Sprite" type="Sprite" parent="Navigation2D/TileMap/Player"]
 texture = ExtResource( 2 )
 
-[node name="WeaponPivot" type="Position2D" parent="TileMap/Player"]
+[node name="WeaponPivot" type="Position2D" parent="Navigation2D/TileMap/Player"]
 position = Vector2( 10, 8 )
 
-[node name="Sword" type="Area2D" parent="TileMap/Player/WeaponPivot"]
+[node name="Sword" type="Area2D" parent="Navigation2D/TileMap/Player/WeaponPivot"]
 rotation = 2.26893
 script = ExtResource( 9 )
 
-[node name="Collision" type="CollisionPolygon2D" parent="TileMap/Player/WeaponPivot/Sword"]
+[node name="Collision" type="CollisionPolygon2D" parent="Navigation2D/TileMap/Player/WeaponPivot/Sword"]
 position = Vector2( 9.19412, -15.3132 )
 polygon = PoolVector2Array( -7.7572, 15.6469, 12.1069, -16.686, 1.87535, -13.3223, -7.81023, 0.0264893, -5.23906, 3.0907, -11.8605, 13.8683 )
 disabled = true
 
-[node name="Sprite" type="Sprite" parent="TileMap/Player/WeaponPivot/Sword"]
+[node name="Sprite" type="Sprite" parent="Navigation2D/TileMap/Player/WeaponPivot/Sword"]
 position = Vector2( 9.19409, -15.3132 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 6 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TileMap/Player/WeaponPivot/Sword"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Navigation2D/TileMap/Player/WeaponPivot/Sword"]
 autoplay = "attack"
 anims/RESET = SubResource( 2 )
 anims/attack = SubResource( 3 )
 
-[node name="Crate" type="StaticBody2D" parent="TileMap" groups=["hurtbox"]]
+[node name="Crate" type="StaticBody2D" parent="Navigation2D/TileMap" groups=["hurtbox"]]
 position = Vector2( 672, 224 )
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 8 )
 
-[node name="Collision" type="CollisionShape2D" parent="TileMap/Crate"]
+[node name="Collision" type="CollisionShape2D" parent="Navigation2D/TileMap/Crate"]
 position = Vector2( 0, 9.53674e-07 )
 shape = SubResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="TileMap/Crate"]
+[node name="Sprite" type="Sprite" parent="Navigation2D/TileMap/Crate"]
 texture = ExtResource( 7 )
 
-[node name="Crate2" type="StaticBody2D" parent="TileMap" groups=["hurtbox"]]
+[node name="Crate2" type="StaticBody2D" parent="Navigation2D/TileMap" groups=["hurtbox"]]
 position = Vector2( 352, 96 )
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 8 )
 
-[node name="Collision" type="CollisionShape2D" parent="TileMap/Crate2"]
+[node name="Collision" type="CollisionShape2D" parent="Navigation2D/TileMap/Crate2"]
 position = Vector2( 0, 9.53674e-07 )
 shape = SubResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="TileMap/Crate2"]
+[node name="Sprite" type="Sprite" parent="Navigation2D/TileMap/Crate2"]
 texture = ExtResource( 7 )
 
-[node name="Crate3" type="StaticBody2D" parent="TileMap" groups=["hurtbox"]]
+[node name="Crate3" type="StaticBody2D" parent="Navigation2D/TileMap" groups=["hurtbox"]]
 position = Vector2( 224, 96 )
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 8 )
 
-[node name="Collision" type="CollisionShape2D" parent="TileMap/Crate3"]
+[node name="Collision" type="CollisionShape2D" parent="Navigation2D/TileMap/Crate3"]
 position = Vector2( 0, 9.53674e-07 )
 shape = SubResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="TileMap/Crate3"]
+[node name="Sprite" type="Sprite" parent="Navigation2D/TileMap/Crate3"]
 texture = ExtResource( 7 )
 
-[node name="Crate4" type="StaticBody2D" parent="TileMap" groups=["hurtbox"]]
+[node name="Crate4" type="StaticBody2D" parent="Navigation2D/TileMap" groups=["hurtbox"]]
 position = Vector2( 224, 352 )
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 8 )
 
-[node name="Collision" type="CollisionShape2D" parent="TileMap/Crate4"]
+[node name="Collision" type="CollisionShape2D" parent="Navigation2D/TileMap/Crate4"]
 position = Vector2( 0, 9.53674e-07 )
 shape = SubResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="TileMap/Crate4"]
+[node name="Sprite" type="Sprite" parent="Navigation2D/TileMap/Crate4"]
 texture = ExtResource( 7 )
 
-[node name="Crate5" type="StaticBody2D" parent="TileMap" groups=["hurtbox"]]
+[node name="Crate5" type="StaticBody2D" parent="Navigation2D/TileMap" groups=["hurtbox"]]
 position = Vector2( 800, 416 )
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 8 )
 
-[node name="Collision" type="CollisionShape2D" parent="TileMap/Crate5"]
+[node name="Collision" type="CollisionShape2D" parent="Navigation2D/TileMap/Crate5"]
 position = Vector2( 0, 9.53674e-07 )
 shape = SubResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="TileMap/Crate5"]
+[node name="Sprite" type="Sprite" parent="Navigation2D/TileMap/Crate5"]
 texture = ExtResource( 7 )
 
-[node name="Zombie" type="KinematicBody2D" parent="TileMap" groups=["hurtbox"]]
+[node name="Zombie" type="KinematicBody2D" parent="Navigation2D/TileMap" groups=["hurtbox"]]
 position = Vector2( 529, 430 )
 rotation = -1.94604
 script = ExtResource( 11 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Zombie"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/TileMap/Zombie"]
 position = Vector2( -1, 0 )
 shape = SubResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="TileMap/Zombie"]
+[node name="Sprite" type="Sprite" parent="Navigation2D/TileMap/Zombie"]
 texture = ExtResource( 10 )
+
+[node name="Line2D" type="Line2D" parent="Navigation2D"]
+
+[node name="PlatformClient" type="Node2D" parent="."]
+script = ExtResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -220,4 +224,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="body_entered" from="TileMap/Player/WeaponPivot/Sword" to="TileMap/Player/WeaponPivot/Sword" method="_on_Sword_body_entered"]
+[connection signal="body_entered" from="Navigation2D/TileMap/Player/WeaponPivot/Sword" to="Navigation2D/TileMap/Player/WeaponPivot/Sword" method="_on_Sword_body_entered"]

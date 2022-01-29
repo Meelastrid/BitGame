@@ -13,7 +13,7 @@ func _ready():
 func rotate_to_mouse():
     look_at(get_global_mouse_position())
 
-func _input(event):
+func _unhandled_input(event):
     target = get_global_mouse_position()
     if event.is_action_pressed("left_click"):
         moving = true

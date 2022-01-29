@@ -10,6 +10,11 @@ var _angle = 0
 func _ready():
     set_process(true)
     _centre = position
+    var a = get_node("/root/Main/Navigation2D/TileMap/Crate")
+    var new_path : Navigation2D = get_node("/root/Main/Navigation2D")
+    new_path.get_simple_path(position, a.position)
+    
+    print(new_path)
 
 
 func take_damage():
@@ -20,7 +25,4 @@ func take_damage():
 
 func _physics_process(delta):
     pass
-#    _angle += RotateSpeed * delta;
-#    var offset = Vector2(sin(_angle), cos(_angle)) * Radius;
-#    var pos = _centre + offset
-#    move_and_slide(pos)
+
