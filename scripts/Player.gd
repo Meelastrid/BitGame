@@ -21,7 +21,7 @@ func _unhandled_input(event):
         print("Attacking")
         animation_player.play("attack")
 
-func _physics_process(delta):
+func _physics_process(_delta):
     look_at(target)
     if moving:
         velocity = position.direction_to(target) * speed

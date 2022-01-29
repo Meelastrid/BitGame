@@ -2,12 +2,6 @@ extends Area2D
 
 onready var entered_bodies = []
 
-func _ready():
-    pass
-
-func _process(delta):
-    pass
-
 func _clear_entered_bodies():
     entered_bodies = []
 

@@ -230,6 +230,8 @@ window/stretch/aspect="keep"
 [global]
 
 colli=false
+coll=false
+laye=false
 
 [input]
 

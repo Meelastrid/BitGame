@@ -49,6 +49,7 @@ func _init():
 #    _settings.save()
 #    _settings.load()
 
+# warning-ignore:return_value_discarded
     _server.connect("data_received", self, "_data_received")
 
 func _ready():
@@ -63,6 +64,7 @@ func _ready():
     var settings = _settings.data()
 
     # Start the web socket server on the configured port.
+# warning-ignore:return_value_discarded
     _server.listen(settings.connection.port)
     # Aunthenticate the cloud client using the app settings.
     _tp_client.auth_service().auth_app(settings.app.id, settings.app.secret, { "callback": _auth_app_callback })
@@ -71,6 +73,7 @@ func _exit_tree():
     # Stop the web socket server when this node is removed from the tree.
     _server.stop()
 
+# warning-ignore:unused_argument
 func _process(delta):
     # Check if the server has started listening for connections.
     if _server.is_listening():
@@ -78,6 +81,7 @@ func _process(delta):
         _server.poll()
 
 func _settings_valid() -> bool:
+# warning-ignore:unused_variable
     var settings = _settings.data()
 #    if settings.developer.id <= 0:
 #        return false
@@ -162,7 +166,8 @@ func _settings_valid() -> bool:
 #    # Send the session data to the client.
 #    WebSocketHelper.send_packet(_server, packet, peer_id, WebSocketPeer.WRITE_MODE_TEXT)
 #
-func _auth_app(udata: Dictionary):
+# warning-ignore:unused_argument
+func _auth_app(udata: Dictionary): #warning-ignore
     # Quit if ap authentication failed.
     if !_tp_client.get_state().is_authed():
         print("Could not authenticate app %s" % _settings.data().app.id)
