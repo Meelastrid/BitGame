@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export (int) var speed : = 50.0
+export (int) var speed : = 100.0
 
 var health = 3
 
@@ -18,15 +18,15 @@ func _physics_process(_delta):
     move_along_path()
 
 func generate_path():
-    var new_path : = nav_2d.get_simple_path(position, player.position)
+    var new_path : = nav_2d.get_simple_path(global_position, player.global_position)
     line_2d.points = new_path
     path = new_path
 
 func move_along_path():
     var target = path[1]
-    var velocity = position.direction_to(target) * speed
-    look_at(player.position)
-    if position.distance_to(player.position) > 30:
+    var velocity = global_position.direction_to(target) * speed
+    look_at(player.global_position)
+    if global_position.distance_to(player.global_position) > 30:
         velocity = move_and_slide(velocity)
 
 func take_damage():
