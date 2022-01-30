@@ -214,6 +214,7 @@ shape = SubResource( 5 )
 texture = ExtResource( 10 )
 
 [node name="Line2D" type="Line2D" parent="Navigation2D"]
+visible = false
 
 [node name="PlatformClient" type="Node2D" parent="."]
 script = ExtResource( 4 )

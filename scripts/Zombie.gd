@@ -3,22 +3,44 @@ extends KinematicBody2D
 export (int) var speed : = 100.0
 
 var health = 3
-
-onready var path : = PoolVector2Array()
+var wandering = true
 
 onready var nav_2d : Navigation2D = get_node("/root/Main/Navigation2D")
-onready var line_2d : Line2D = get_node("/root/Main/Navigation2D/Line2D")
+onready var tilemap : TileMap = get_node("/root/Main/Navigation2D/TileMap")
 onready var player : KinematicBody2D = get_node("/root/Main/Navigation2D/TileMap/Player")
+onready var line_2d : Line2D = get_node("/root/Main/Navigation2D/Line2D")
+
+onready var path : = PoolVector2Array()
+onready var dest : Vector2 = gen_random_position()
 
 func _ready():
-    pass
+    randomize()
 
 func _physics_process(_delta):
-    generate_path()
+    if wandering:
+        print(dest)
+        if global_position.distance_to(dest) < 32:
+            dest = gen_random_position()
+    else:
+        dest = player.global_position
+    generate_path(dest)
     move_along_path()
 
-func generate_path():
-    var new_path : = nav_2d.get_simple_path(global_position, player.global_position)
+func gen_random_position():
+    var viewport = get_viewport_rect().size
+    var x_range = Vector2(10, viewport.x)
+    var y_range = Vector2(10, viewport.y)
+    var random_x = randi() % int(x_range[1]- x_range[0]) + 1 + x_range[0] 
+    var random_y =  randi() % int(y_range[1]-y_range[0]) + 1 + y_range[0]
+    var random_pos = Vector2(random_x, random_y)
+    return random_pos
+    
+func wander():
+    if wandering:
+        pass
+        
+func generate_path(target):
+    var new_path : = nav_2d.get_simple_path(global_position, target)
     line_2d.points = new_path
     path = new_path
 
