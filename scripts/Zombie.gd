@@ -9,6 +9,7 @@ onready var nav_2d : Navigation2D = get_node("/root/Main/Navigation2D")
 onready var tilemap : TileMap = get_node("/root/Main/Navigation2D/TileMap")
 onready var player : KinematicBody2D = get_node("/root/Main/Navigation2D/TileMap/Player")
 onready var line_2d : Line2D = get_node("/root/Main/Navigation2D/Line2D")
+onready var animation_player = $WeaponPivot/Bone/AnimationPlayer
 
 onready var path : = PoolVector2Array()
 onready var dest : Vector2 = gen_random_position()
@@ -17,14 +18,20 @@ func _ready():
     randomize()
 
 func _physics_process(_delta):
+    if global_position.distance_to(player.global_position) > 200:
+        wandering = true
+    else:
+        wandering = false
     if wandering:
-        print(dest)
         if global_position.distance_to(dest) < 32:
             dest = gen_random_position()
     else:
         dest = player.global_position
+    look_at(dest)
     generate_path(dest)
     move_along_path()
+    if global_position.distance_to(player.global_position) < 50:
+        animation_player.play("attack")
 
 func gen_random_position():
     var viewport = get_viewport_rect().size
@@ -47,7 +54,6 @@ func generate_path(target):
 func move_along_path():
     var target = path[1]
     var velocity = global_position.direction_to(target) * speed
-    look_at(player.global_position)
     if global_position.distance_to(player.global_position) > 30:
         velocity = move_and_slide(velocity)
 

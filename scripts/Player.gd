@@ -5,6 +5,7 @@ export (int) var speed = 200
 var target = position
 var velocity = Vector2()
 var moving = false
+var health = 20
 onready var animation_player = $WeaponPivot/Sword/AnimationPlayer
 
 func _ready():
@@ -15,9 +16,9 @@ func rotate_to_mouse():
 
 func _unhandled_input(event):
     target = get_global_mouse_position()
-    if event.is_action_pressed("left_click"):
-        moving = true
     if event.is_action_pressed("right_click"):
+        moving = true
+    if event.is_action_pressed("left_click"):
         print("Attacking")
         animation_player.play("attack")
 
@@ -29,3 +30,9 @@ func _physics_process(_delta):
             velocity = move_and_slide(velocity)
         else:
             moving = false
+
+func take_damage():
+    health -= 1
+    print("Player hit! Health: ", health)
+    if health <= 0:
+        queue_free()
