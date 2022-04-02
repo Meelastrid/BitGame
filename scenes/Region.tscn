@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="Navigation2D" type="Navigation2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+cell_tile_origin = 1
+format = 1

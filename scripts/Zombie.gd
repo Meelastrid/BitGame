@@ -48,14 +48,15 @@ func wander():
         
 func generate_path(target):
     var new_path : = nav_2d.get_simple_path(global_position, target)
-    line_2d.points = new_path
+    #line_2d.points = new_path
     path = new_path
 
 func move_along_path():
-    var target = path[1]
-    var velocity = global_position.direction_to(target) * speed
-    if global_position.distance_to(player.global_position) > 30:
-        velocity = move_and_slide(velocity)
+    if path:
+        var target = path[1]
+        var velocity = global_position.direction_to(target) * speed
+        if global_position.distance_to(player.global_position) > 30:
+            velocity = move_and_slide(velocity)
 
 func take_damage():
     health -= 1

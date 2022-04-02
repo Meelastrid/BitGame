@@ -224,6 +224,8 @@ config/icon="res://icon.png"
 
 [display]
 
+window/size/height=576
+window/size/resizable=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
