@@ -2,10 +2,15 @@ extends Node2D
 onready var player = preload("res://scenes/Player.tscn")
 onready var crate = preload("res://scenes/Crate.tscn")
 onready var zombie = preload("res://scenes/Zombie.tscn")
+onready var gui = preload("res://scenes/GUI.tscn")
 
 func _ready():
     randomize()
     create_region(16, 9)
+
+func add_gui():
+    var ins = gui.instance()
+    add_child(ins) 
 
 func create_region(m, n):
     var region_arr = []
@@ -22,11 +27,12 @@ func create_region(m, n):
             region_arr[i].append(0)
 
     # Place objects
-    place_object_on_tilemap(m, n, region_arr, player)
-    for c in range(1, randi() % 5 + 4):
+    add_gui()
+    for _c in range(1, randi() % 5 + 4):
         place_object_on_tilemap(m, n, region_arr, crate)
-    for c in range(1, randi() % 3 + 2):
+    for _c in range(1, randi() % 3 + 2):
         place_object_on_tilemap(m, n, region_arr, zombie)
+    place_object_on_tilemap(m, n, region_arr, player)
 
 func gen_crate_position(m, n, region_arr):
     for i in range(randi() % m, m):

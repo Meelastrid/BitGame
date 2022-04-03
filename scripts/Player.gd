@@ -6,10 +6,13 @@ var target = position
 var velocity = Vector2()
 var moving = false
 var health = 20
+var max_health = 20
 onready var animation_player = $WeaponPivot/Sword/AnimationPlayer
+onready var hp_gui : Label = get_node("/root/Main/GUI/HBoxContainer/HPValue")
 
 func _ready():
     animation_player.play("RESET")
+    hp_gui.text = str(health)
 
 func rotate_to_mouse():
     look_at(get_global_mouse_position())
@@ -33,6 +36,13 @@ func _physics_process(_delta):
 
 func take_damage():
     health -= 1
-    print("Player hit! Health: ", health)
+    hp_gui.text = str(health)
     if health <= 0:
         queue_free()
+
+func heal(n):
+    if health + n > max_health:
+        health = max_health
+    else:
+        health += n
+    hp_gui.text = str(health)

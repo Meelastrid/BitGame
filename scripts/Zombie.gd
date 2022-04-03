@@ -18,6 +18,9 @@ func _ready():
     randomize()
 
 func _physics_process(_delta):
+    player = get_node("/root/Main/Navigation2D/TileMap/Player")
+    if not player:
+        pass
     if global_position.distance_to(player.global_position) > 200:
         wandering = true
     else:
