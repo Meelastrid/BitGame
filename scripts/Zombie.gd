@@ -7,8 +7,7 @@ var wandering = true
 
 onready var nav_2d : Navigation2D = get_node("/root/Main/Navigation2D")
 onready var tilemap : TileMap = get_node("/root/Main/Navigation2D/TileMap")
-onready var player : KinematicBody2D = get_node("/root/Main/Navigation2D/TileMap/Player")
-onready var line_2d : Line2D = get_node("/root/Main/Navigation2D/Line2D")
+onready var player : KinematicBody2D = get_node_or_null("/root/Main/Navigation2D/TileMap/Player")
 onready var animation_player = $WeaponPivot/Bone/AnimationPlayer
 
 onready var path : = PoolVector2Array()
@@ -51,7 +50,6 @@ func wander():
         
 func generate_path(target):
     var new_path : = nav_2d.get_simple_path(global_position, target)
-    #line_2d.points = new_path
     path = new_path
 
 func move_along_path():
