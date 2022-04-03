@@ -1,34 +1,72 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/fonts/Kenney Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/gui/coin.png" type="Texture" id=2]
+[ext_resource path="res://assets/gui/tool.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 30
+size = 35
 font_data = ExtResource( 1 )
 
 [node name="GUI" type="MarginContainer"]
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 169.0
-margin_bottom = 105.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 267.0
+margin_bottom = 62.0
 mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 137.0
-margin_bottom = 73.0
+margin_right = 276.0
+margin_bottom = 53.0
 mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="LabelHP" type="Label" parent="HBoxContainer"]
-margin_top = 13.0
-margin_right = 60.0
-margin_bottom = 59.0
+margin_right = 70.0
+margin_bottom = 53.0
 custom_fonts/font = SubResource( 1 )
 text = "HP"
 
 [node name="HPValue" type="Label" parent="HBoxContainer"]
-margin_left = 64.0
-margin_top = 13.0
-margin_right = 94.0
-margin_bottom = 59.0
+margin_left = 74.0
+margin_right = 109.0
+margin_bottom = 53.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+margin_left = 113.0
+margin_right = 113.0
+margin_bottom = 53.0
+
+[node name="CoinTexture" type="TextureRect" parent="HBoxContainer"]
+margin_left = 117.0
+margin_right = 163.0
+margin_bottom = 53.0
+texture = ExtResource( 2 )
+
+[node name="CoinValue" type="Label" parent="HBoxContainer"]
+margin_left = 167.0
+margin_right = 202.0
+margin_bottom = 53.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+margin_left = 206.0
+margin_right = 206.0
+margin_bottom = 53.0
+
+[node name="ToolTexture" type="TextureRect" parent="HBoxContainer"]
+margin_left = 210.0
+margin_right = 237.0
+margin_bottom = 53.0
+texture = ExtResource( 3 )
+
+[node name="ToolValue" type="Label" parent="HBoxContainer"]
+margin_left = 241.0
+margin_right = 276.0
+margin_bottom = 53.0
 custom_fonts/font = SubResource( 1 )
 text = "0"

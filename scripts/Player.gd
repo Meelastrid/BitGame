@@ -6,9 +6,13 @@ var target = position
 var velocity = Vector2()
 var moving = false
 var health = 20
+var coins = 0
+var tools = 0
 var max_health = 20
 onready var animation_player = $WeaponPivot/Sword/AnimationPlayer
 onready var hp_gui : Label = get_node("/root/Main/GUI/HBoxContainer/HPValue")
+onready var coins_gui : Label = get_node("/root/Main/GUI/HBoxContainer/CoinValue")
+onready var tools_gui : Label = get_node("/root/Main/GUI/HBoxContainer/ToolValue")
 
 func _ready():
     animation_player.play("RESET")
@@ -46,3 +50,11 @@ func heal(n):
     else:
         health += n
     hp_gui.text = str(health)
+
+func add_coins(n):
+    coins += n
+    coins_gui.text = str(coins)
+    
+func add_tools(n):
+    tools += n
+    tools_gui.text = str(tools)

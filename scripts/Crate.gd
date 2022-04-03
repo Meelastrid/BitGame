@@ -2,8 +2,10 @@ extends StaticBody2D
 
 onready var tilemap : TileMap = get_node("/root/Main/Navigation2D/TileMap")
 onready var medkit : PackedScene = preload("res://scenes/Medkit.tscn")
+onready var tools : PackedScene = preload("res://scenes/Tool.tscn")
+onready var coin : PackedScene = preload("res://scenes/Coin.tscn")
 
-onready var possible_loot = [medkit, medkit, medkit]
+onready var possible_loot = [medkit, tools, coin]
 var probability : int = 50 # 50% chance
 
 
